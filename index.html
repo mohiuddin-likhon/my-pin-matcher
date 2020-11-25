@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="pin-generator half-width">
-                    <input class="form-control" value="" type="text" id="input-left">
+                    <input class="pinx" value="" type="text" id="input-left">
                     <button id="generate-btn" class="generate-btn">Generate Pin</button>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                 <div class="input-section half-width">
                    
                     <form action="" name="form">
-                        <input class="form-control"  type="text" value="" id="input-right" >
+                        <input class="piny"  type="text" value="" id="input-right" >
                     </form>
                     <div class="numbers">
                         <div class="calc-body">
@@ -48,8 +48,8 @@
                                 <button class="number clear" id="clear-all">c</button>
                             </div>
                             <div>
-                                <button type="submit" id="submit-btn">Submit</button>
-                                <p class="action-left">3 try left</p>
+                                <button class="button2" type="submit" id="submit-btn">Submit</button>
+                                <p class="action-left" id="alert">3 try left</p>
                                
                             </div>
                     </div>
@@ -63,9 +63,6 @@
         </div>
     </div>
     <script>
-       
-    //  document.getElementById('notify1').style.display='none';
-    //  document.getElementById('notify2').style.display='none';
          
         document.getElementById('generate-btn').addEventListener('click',function(){
             var randomNumber =  document.getElementById('input-left').value = Math.floor(Math.min(1000)+( Math.random() * 9000) + 1 );
@@ -88,16 +85,41 @@
 
          });
 
-         
-         document.getElementById('submit-btn').addEventListener('click',function(){
-            const pinLeft = document.getElementById('input-left').value;
-            const pinRight = document.getElementById('input-left').value;
-            const Notmatched = document.getElementById('notify1');
-            const matched = document.getElementById('notify2');
-            matched.style.display='block';
-   
+           //Pin Matching Area
+    document.querySelector('.button2').onclick = function(){
+        var generatePin = document.querySelector('.pinx').value;
+         var confirmPin = document.querySelector('.piny').value;
+         if(generatePin==confirmPin){
+            document.getElementById('notify2').style.display='block';
+            return true;
+         }
+         else if(generatePin !=confirmPin){
+            document.getElementById('notify1').style.display='block';
+            return false;
+         }
+            
+    }
 
-         });
+        //method 2 but not working
+        //  function checkPin() {
+        //     var pinLeft = document.getElementById('input-left').value;
+        //      pinRight = document.getElementById('input-left').value;
+
+             
+         
+        //      if(pinLeft == pinRight) {
+
+        //         document.getElementById('notify2').style.display='block';
+              
+        //       } 
+        //       if(pinLeft!= pinRight){
+        //     document.getElementById('notify1').style.display='block';
+      
+        //         }
+        // }
+
+         
+
 
       
         
